@@ -14,7 +14,6 @@
 package me.thevipershow.geomvectorlib.geometry.planes;
 
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
-import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 
 public final class BidimensionalUtils {
     /**
