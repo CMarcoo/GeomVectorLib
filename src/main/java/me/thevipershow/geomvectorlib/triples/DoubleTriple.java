@@ -83,7 +83,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param <T>          must extend {@link DoubleTriple}
      * @return a new DoubleTriple with the new values
      */
-    public <T extends DoubleTriple> DoubleTriple sum(final T doubleTriple) {
+    public <T extends DoubleTriple> DoubleTriple scalarProduct(final T doubleTriple) {
         return new DoubleTriple((first + doubleTriple.getFirst()), (second + doubleTriple.getSecond()), (third + doubleTriple.getThird()));
     }
 
@@ -95,7 +95,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param third  the value that will be summed to the third double
      * @return a new DoubleTriple with the new values
      */
-    public DoubleTriple sum(final double first, final double second, final double third) {
+    public DoubleTriple scalarProduct(final double first, final double second, final double third) {
         return new DoubleTriple((this.first + first), (this.second + second), (this.third + third));
     }
 
@@ -144,7 +144,9 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @return a new DoubleTriple with the new values
      */
     public DoubleTriple crossProduct(final double first, final double second, final double third) {
-        return crossProduct(new DoubleTriple(first, second, third));
+        return new DoubleTriple(((this.second * third) - (this.third * second)),
+                ((this.third * first) - (this.first * third)),
+                ((this.first * second) - (this.second * first)));
     }
 
     /**
