@@ -108,24 +108,11 @@ public class DoublePair implements Pair<Double, Double> {
     }
 
     /**
-     * Multiply another Object extending DoublePair to this
-     *
-     * @param doublePair the object whose values will be multiplied to this
-     * @param <T>        must extend {@link DoublePair}
-     * @return a new DoublePair with the new values
+     * Resize current DoublePair with a provided value
+     * @param value a double value
+     * @return the new resized DoublePair
      */
-    public <T extends DoublePair> DoublePair multiply(final T doublePair) {
-        return new DoublePair((this.first * doublePair.getFirst()), (this.second * doublePair.getSecond()));
-    }
-
-    /**
-     * Multiply values of the current DoublePair.
-     *
-     * @param first  the value that will be multiplied by the first double
-     * @param second the value that will be multiplied by the second double
-     * @return a new DoublePair with the new values
-     */
-    public DoublePair multiply(final double first, double second) {
-        return new DoublePair((this.first * first), (this.second * second));
+    public DoublePair resize(final double value) {
+        return new DoublePair((first * value), (second * value));
     }
 }

@@ -129,8 +129,10 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param <T>          must extend {@link DoubleTriple}
      * @return a new DoubleTriple with the new values
      */
-    public <T extends DoubleTriple> DoubleTriple multiply(final T doubleTriple) {
-        return new DoubleTriple((first * doubleTriple.getFirst()), (second * doubleTriple.getSecond()), (third * doubleTriple.getThird()));
+    public <T extends DoubleTriple> DoubleTriple crossProduct(final T doubleTriple) {
+        return new DoubleTriple(((second * doubleTriple.getThird()) - (third * doubleTriple.getSecond())),
+                ((third * doubleTriple.getFirst()) - (first * doubleTriple.getThird())),
+                ((first * doubleTriple.getSecond()) - (second * doubleTriple.getFirst())));
     }
 
     /**
@@ -141,17 +143,17 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param third  the value that will multiply the third double
      * @return a new DoubleTriple with the new values
      */
-    public DoubleTriple multiply(final double first, final double second, final double third) {
-        return new DoubleTriple((this.first * first), (this.second * second), (this.third * third));
+    public DoubleTriple crossProduct(final double first, final double second, final double third) {
+        return crossProduct(new DoubleTriple(first, second, third));
     }
 
     /**
-     * Multiply values of the current DoubleTriple
+     * Resize the current vector
      *
      * @param value the double value that will multiply every current value
      * @return a new DoubleTriple with the new values
      */
-    public DoubleTriple multiply(final double value) {
+    public DoubleTriple resize(final double value) {
         return new DoubleTriple((first * value), (second * value), (third * value));
     }
 }
