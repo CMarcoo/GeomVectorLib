@@ -144,4 +144,14 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
     public DoubleTriple multiply(final double first, final double second, final double third) {
         return new DoubleTriple((this.first * first), (this.second * second), (this.third * third));
     }
+
+    /**
+     * Multiply values of the current DoubleTriple
+     *
+     * @param value the double value that will multiply every current value
+     * @return a new DoubleTriple with the new values
+     */
+    public DoubleTriple multiply(final double value) {
+        return new DoubleTriple((first * value), (second * value), (third * value));
+    }
 }
