@@ -44,7 +44,7 @@ public final class TridimensionalUtils {
      * @return the exact distance between the two points in space
      */
     public static double distanceBetweenSpacePoints(final double x1, final double y1, final double z1, final double x2, final double y2, final double z2) {
-        return distanceBetweenSpacePoints(new DoubleTriple(x1, y1, z1), new DoubleTriple(x2, y2, z2));
+        return Math.sqrt(Math.pow((x1 - x2), 2d) + Math.pow((y1 - y2), 2d) + Math.pow((z1 - z2), 2d));
     }
 
     /**
