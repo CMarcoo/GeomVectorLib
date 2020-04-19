@@ -64,6 +64,30 @@ public class DoublePair implements Pair<Double, Double> {
     }
 
     /**
+     * This methods calculates the scalar product of two DoublePair objects
+     *
+     * @param doublePair the other DoublePair object
+     * @param <T>        an object extending DoublePair
+     * @return the scalar product between the two DoublePairs
+     * {@see <a href="https://en.wikipedia.org/wiki/Dot_product">Scalar Product</a>}
+     */
+    public <T extends DoublePair> double scalarProduct(final T doublePair) {
+        return ((first * doublePair.getFirst()) + (second * doublePair.getSecond()));
+    }
+
+    /**
+     * This methods calculates the scalar product of this DobulePair and another point in the plane
+     *
+     * @param x the first axis coordinate
+     * @param y the second axis coordinate
+     * @return the scalar product between the two points
+     * {@see <a href="https://en.wikipedia.org/wiki/Dot_product">Scalar Product</a>}
+     */
+    public double scalarProduct(final double x, final double y) {
+        return ((first * x) + (second * y));
+    }
+
+    /**
      * Sum another Object extending DoublePair to this
      *
      * @param doublePair the object whose values will be summed to this
@@ -109,6 +133,7 @@ public class DoublePair implements Pair<Double, Double> {
 
     /**
      * Resize current DoublePair with a provided value
+     *
      * @param value a double value
      * @return the new resized DoublePair
      */

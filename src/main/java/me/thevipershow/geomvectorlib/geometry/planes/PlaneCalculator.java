@@ -17,5 +17,4 @@ import me.thevipershow.geomvectorlib.geometry.common.GeometryCalculator;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 
 public interface PlaneCalculator extends GeometryCalculator<DoublePair> {
-
 }

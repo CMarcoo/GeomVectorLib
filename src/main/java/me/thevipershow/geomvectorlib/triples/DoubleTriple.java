@@ -83,7 +83,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param <T>          must extend {@link DoubleTriple}
      * @return a new DoubleTriple with the new values
      */
-    public <T extends DoubleTriple> DoubleTriple scalarProduct(final T doubleTriple) {
+    public <T extends DoubleTriple> DoubleTriple sum(final T doubleTriple) {
         return new DoubleTriple((first + doubleTriple.getFirst()), (second + doubleTriple.getSecond()), (third + doubleTriple.getThird()));
     }
 
@@ -95,7 +95,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param third  the value that will be summed to the third double
      * @return a new DoubleTriple with the new values
      */
-    public DoubleTriple scalarProduct(final double first, final double second, final double third) {
+    public DoubleTriple sum(final double first, final double second, final double third) {
         return new DoubleTriple((this.first + first), (this.second + second), (this.third + third));
     }
 
@@ -123,11 +123,12 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
     }
 
     /**
-     * Multiply another Object extending DoubleTriple to this
+     * Perform the cross product on the current DoubleTriple
      *
      * @param doubleTriple the object whose values will be multiplied by this
      * @param <T>          must extend {@link DoubleTriple}
      * @return a new DoubleTriple with the new values
+     * {@see <a href="https://en.wikipedia.org/wiki/Cross_product"></a>}
      */
     public <T extends DoubleTriple> DoubleTriple crossProduct(final T doubleTriple) {
         return new DoubleTriple(((second * doubleTriple.getThird()) - (third * doubleTriple.getSecond())),
@@ -136,17 +137,43 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
     }
 
     /**
-     * Multiply values of the current DoubleTriple.
+     * Perform the cross product on the current DoubleTriple
      *
-     * @param first  the value that will multiply the first double
-     * @param second the value that will multiply the second double
-     * @param third  the value that will multiply the third double
+     * @param first  the first axis coordinate
+     * @param second the second axis coordinate
+     * @param third  the third axis coordinate
      * @return a new DoubleTriple with the new values
+     * {@see <a href="https://en.wikipedia.org/wiki/Cross_product"></a>}
      */
     public DoubleTriple crossProduct(final double first, final double second, final double third) {
         return new DoubleTriple(((this.second * third) - (this.third * second)),
                 ((this.third * first) - (this.first * third)),
                 ((this.first * second) - (this.second * first)));
+    }
+
+    /**
+     * This methods calculates the scalar product of two DoubleTriple objects
+     *
+     * @param doubleTriple the other DoubleTriple object
+     * @param <T>          an object extending DoubleTriple
+     * @return the scalar product between the two points
+     * {@see <a href="https://en.wikipedia.org/wiki/Dot_product">Scalar Product</a>}
+     */
+    public <T extends DoubleTriple> double scalarProduct(final T doubleTriple) {
+        return ((first * doubleTriple.getFirst()) + (second * doubleTriple.getSecond()) + (third * doubleTriple.getThird()));
+    }
+
+    /**
+     * This methods calculates the scalar product of this DoubleTriple and another point in space
+     *
+     * @param x1 the first axis coordinate
+     * @param y1 the second axis coordinate
+     * @param z1 the third axis coordinate
+     * @return the scalar product between the two points
+     * {@see <a href="https://en.wikipedia.org/wiki/Dot_product">Scalar Product</a>}
+     */
+    public double scalarProduct(final double x1, final double y1, final double z1) {
+        return ((first * x1) + (second * y1) + (third * z1));
     }
 
     /**

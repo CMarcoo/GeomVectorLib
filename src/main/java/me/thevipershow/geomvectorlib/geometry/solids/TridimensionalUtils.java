@@ -63,7 +63,7 @@ public final class TridimensionalUtils {
                 (secondPoint.getSecond() - firstPoint.getSecond()),
                 (secondPoint.getThird() - firstPoint.getThird()));
         for (double i = 0.0d; i < 1.0d; i += delta) {
-            doubleTripleSet.add(firstPoint.scalarProduct(resultDoubleTriple.resize(i)));
+            doubleTripleSet.add(firstPoint.sum(resultDoubleTriple.resize(i)));
         }
         return doubleTripleSet;
     }

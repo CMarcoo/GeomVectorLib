@@ -21,7 +21,7 @@ public final class BidimensionalUtils {
      *
      * @param firstPoint  the DoubleTriple representing the first point
      * @param secondPoint the DoubleTriple representing the second point
-     * @return the exact distance between the two points in space
+     * @return the exact distance between the two points in the plane
      */
     public static double distanceBetweenPlanePoints(final DoublePair firstPoint, final DoublePair secondPoint) {
         final double differenceX = secondPoint.getFirst() - firstPoint.getFirst();
@@ -36,7 +36,7 @@ public final class BidimensionalUtils {
      * @param y1 the second coordinate of the first point
      * @param x2 the first coordinate of the second point
      * @param y2 the second coordinate of the second point
-     * @return the exact distance between the two points in space
+     * @return the exact distance between the two points in the plane
      */
     public static double distanceBetweenPlanePoints(final double x1, final double y1, final double x2, final double y2) {
         return Math.sqrt(Math.pow((x1 - x2), 2d) + Math.pow((y1 - y2), 2d));

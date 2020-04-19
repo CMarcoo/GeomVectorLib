@@ -16,7 +16,7 @@ package me.thevipershow.geomvectorlib.geometry.common;
 import java.util.Set;
 
 public interface GeometryCalculator<T> {
-    Set<T> calculateVertexes();
+    Set<T> calculateVertexes(double delta);
 
     double calculateSurface();
 }
