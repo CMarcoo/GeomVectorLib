@@ -27,23 +27,43 @@ public class CirclePlane extends RegularPlaneShape {
         super(1, radius, x1, y1);
     }
 
-    @Override
-    public Set<DoublePair> calculateVertexes(double distribution) {
-        final Set<DoublePair> doublePairs = new HashSet<>();
-        for (double i = 0d; i < Math.toRadians(360d); i += Math.toRadians(distribution)) {
-            doublePairs.add(new DoublePair(
+    private Set<DoublePair> getCircleVertexes(double distribution, double degrees) {
+        final Set<DoublePair> doublePairSet = new HashSet<>();
+        for (double i = 0d; i < Math.toRadians(degrees); i += Math.toRadians(distribution)) {
+            doublePairSet.add(new DoublePair(
                     (radius * Math.sin(i)) + center.getFirst(),
                     (radius * Math.cos(i)) + center.getSecond()
             ));
         }
-        return doublePairs;
+        return doublePairSet;
     }
 
+    @Override
+    public Set<DoublePair> calculateVertexes(double distribution) {
+        return getCircleVertexes(distribution, 360d);
+    }
+
+    public Set<DoublePair> calculateVertexes(double distribution, double degrees) {
+        return getCircleVertexes(distribution, degrees);
+    }
+
+    /**
+     * Calculate the surface of the current circle
+     *
+     * @return the surface of this circle from the radius
+     * {@see <a href="https://en.wikipedia.org/wiki/Circle#Area_enclosed">Circle surface</a>}
+     */
     @Override
     public double calculateSurface() {
         return (Math.PI * Math.pow(radius, 2d));
     }
 
+    /**
+     * Calculate the length of the circumference of the current circle
+     *
+     * @return the length of the circumference from the radius
+     * {@see <a href="https://en.wikipedia.org/wiki/Circle#Length_of_circumference">Circle circumference</a>}
+     */
     public double calculateCircumference() {
         return (Math.PI * (radius * 2));
     }

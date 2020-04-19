@@ -33,7 +33,7 @@ public class SphereSolid extends RegularSolidShape {
         final Set<Set<DoubleTriple>> sphereVertexes = new HashSet<>(); // The result
         final CirclePlane dummyCircle = new CirclePlane(radius, new DoublePair(center.getFirst(), center.getSecond()));
         final List<DoubleTriple> dummyCircleInSpace = new ArrayList<>();
-        dummyCircle.calculateVertexes(delta).forEach(vx -> dummyCircleInSpace.add(new DoubleTriple(vx.getFirst(), vx.getSecond(), center.getThird())));
+        dummyCircle.calculateVertexes(delta, 180d).forEach(vx -> dummyCircleInSpace.add(new DoubleTriple(vx.getFirst(), vx.getSecond(), center.getThird())));
         dummyCircleInSpace.forEach(point -> {
             final DoubleTriple newCenter = new DoubleTriple(center.getFirst(), point.getSecond(), center.getThird());
             final double currentRadius = TridimensionalUtils.distanceBetweenSpacePoints(point, newCenter);
@@ -46,11 +46,23 @@ public class SphereSolid extends RegularSolidShape {
         return sphereVertexes;
     }
 
+    /**
+     * Calculate the surface of the current sphere solid.
+     *
+     * @return the surface of this sphere solid
+     * {@see <a href="https://en.wikipedia.org/wiki/Sphere#Surface_area">Sphere surface</a>}
+     */
     @Override
     public final double calculateSurface() {
         return 4d * Math.PI * Math.pow(radius, 2d);
     }
 
+    /**
+     * Calculate the volume of the current sphere solid.
+     *
+     * @return the volume of this sphere solid
+     * {@see <a href="https://en.wikipedia.org/wiki/Sphere#Enclosed_volume">Sphere volume</a>}
+     */
     @Override
     public final double calculateVolume() {
         return (4d / 3d) * Math.PI * Math.pow(radius, 3d);
