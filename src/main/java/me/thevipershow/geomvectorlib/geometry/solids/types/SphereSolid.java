@@ -13,8 +13,14 @@
 
 package me.thevipershow.geomvectorlib.geometry.solids.types;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import me.thevipershow.geomvectorlib.geometry.planes.types.CirclePlane;
 import me.thevipershow.geomvectorlib.geometry.solids.RegularSolidShape;
+import me.thevipershow.geomvectorlib.geometry.solids.TridimensionalUtils;
+import me.thevipershow.geomvectorlib.pairs.DoublePair;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 
 public class SphereSolid extends RegularSolidShape {
@@ -23,8 +29,21 @@ public class SphereSolid extends RegularSolidShape {
     }
 
     @Override
-    public Set<Set<DoubleTriple>> calculateVertexes() {
-        return null; // TODO: 18/04/2020 Implement.
+    public Set<Set<DoubleTriple>> calculateVertexes(double delta) {
+        final Set<Set<DoubleTriple>> sphereVertexes = new HashSet<>(); // The result
+        final CirclePlane dummyCircle = new CirclePlane(radius, new DoublePair(center.getFirst(), center.getSecond()));
+        final List<DoubleTriple> dummyCircleInSpace = new ArrayList<>();
+        dummyCircle.calculateVertexes(delta).forEach(vx -> dummyCircleInSpace.add(new DoubleTriple(vx.getFirst(), vx.getSecond(), center.getThird())));
+        dummyCircleInSpace.forEach(point -> {
+            final DoubleTriple newCenter = new DoubleTriple(center.getFirst(), point.getSecond(), center.getThird());
+            final double currentRadius = TridimensionalUtils.distanceBetweenSpacePoints(point, newCenter);
+            final Set<DoubleTriple> currentCircleSet = new HashSet<>();
+            new CirclePlane(currentRadius, new DoublePair(newCenter.getFirst(), newCenter.getThird())).calculateVertexes(delta)
+                    .forEach(pair -> currentCircleSet.add(new DoubleTriple(pair.getFirst(), newCenter.getSecond(), pair.getSecond())));
+            sphereVertexes.add(currentCircleSet);
+        });
+
+        return sphereVertexes;
     }
 
     @Override
