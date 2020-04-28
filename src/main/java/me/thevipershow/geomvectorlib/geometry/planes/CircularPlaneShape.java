@@ -14,9 +14,10 @@
 package me.thevipershow.geomvectorlib.geometry.planes;
 
 import me.thevipershow.geomvectorlib.geometry.common.CircularVertexesCalculator;
+import me.thevipershow.geomvectorlib.geometry.common.PlaneCalculator;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 
-public abstract class CircularPlaneShape implements CircularVertexesCalculator<DoublePair> {
+public abstract class CircularPlaneShape implements CircularVertexesCalculator<DoublePair>, PlaneCalculator {
     protected final double radius;
     protected final DoublePair center;
 

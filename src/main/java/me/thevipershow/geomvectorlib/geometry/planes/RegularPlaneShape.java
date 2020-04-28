@@ -13,23 +13,24 @@
 
 package me.thevipershow.geomvectorlib.geometry.planes;
 
+import me.thevipershow.geomvectorlib.geometry.common.PlaneCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 
-public abstract class RegularPlaneShape implements VertexesCalculator<DoublePair> {
+public abstract class RegularPlaneShape implements VertexesCalculator<DoublePair>, PlaneCalculator {
     protected final int sides;
-    protected final double radius;
+    protected final double apothem;
     protected final DoublePair center;
 
-    public RegularPlaneShape(int sides, double radius, DoublePair center) {
+    public RegularPlaneShape(int sides, double apothem, DoublePair center) {
         this.sides = sides;
-        this.radius = radius;
+        this.apothem = apothem;
         this.center = center;
     }
 
-    public RegularPlaneShape(int sides, double radius, final double x1, final double y1) {
+    public RegularPlaneShape(int sides, double apothem, final double x1, final double y1) {
         this.sides = sides;
-        this.radius = radius;
+        this.apothem = apothem;
         this.center = new DoublePair(x1, y1);
     }
 }

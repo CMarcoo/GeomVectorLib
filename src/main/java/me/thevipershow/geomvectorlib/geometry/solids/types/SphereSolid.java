@@ -27,27 +27,12 @@ public class SphereSolid extends RegularSphericalShape {
 
     @Override
     public Set<CirclePlane> calculateVertexes(double delta) {
-        //final Set<Set<DoubleTriple>> sphereVertexes = new HashSet<>(); // The result
-        //final CirclePlane dummyCircle = new CirclePlane(radius, new DoublePair(center.getFirst(), center.getSecond()));
-        //final List<DoubleTriple> dummyCircleInSpace = new ArrayList<>();
-        //dummyCircle.calculateVertexes(delta, 180d).forEach(vx -> dummyCircleInSpace.add(new DoubleTriple(vx.getFirst(), vx.getSecond(), center.getThird())));
-        //dummyCircleInSpace.forEach(point -> {
-        //    final DoubleTriple newCenter = new DoubleTriple(center.getFirst(), point.getSecond(), center.getThird());
-        //    final double currentRadius = TridimensionalUtils.distanceBetweenSpacePoints(point, newCenter);
-        //    final Set<DoubleTriple> currentCircleSet = new HashSet<>();
-        //    new CirclePlane(currentRadius, new DoublePair(newCenter.getFirst(), newCenter.getThird())).calculateVertexes(delta)
-        //            .forEach(pair -> currentCircleSet.add(new DoubleTriple(pair.getFirst(), newCenter.getSecond(), pair.getSecond())));
-        //    sphereVertexes.add(currentCircleSet);
-        //});
-
-        //return sphereVertexes;
         final Set<CirclePlane> circlePlaneSet = new HashSet<>();
         final Set<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180.d);
         for (final DoublePair dp : dummyCircle) {
             final double currentRadius = Math.abs(dp.getFirst() - super.center.getFirst());
             circlePlaneSet.add(new CirclePlane(currentRadius, dp.getFirst(), dp.getSecond()));
         }
-
         return circlePlaneSet;
     }
 
@@ -59,7 +44,7 @@ public class SphereSolid extends RegularSphericalShape {
      */
     @Override
     public final double getSurface() {
-        return 4d * Math.PI * Math.pow(radius, 2d);
+        return 4d * Math.PI * Math.pow(super.radius, 2d);
     }
 
     /**
@@ -70,6 +55,6 @@ public class SphereSolid extends RegularSphericalShape {
      */
     @Override
     public final double getVolume() {
-        return (4d / 3d) * Math.PI * Math.pow(radius, 3d);
+        return (4d / 3d) * Math.PI * Math.pow(super.radius, 3d);
     }
 }

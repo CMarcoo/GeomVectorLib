@@ -30,10 +30,20 @@ public class SquarePlane extends RegularPlaneShape {
     @Override
     public Set<DoublePair> calculateVertexes() {
         final Set<DoublePair> vertexes = new HashSet<>();
-        vertexes.add(center.sum(radius, radius));
-        vertexes.add(center.sum(radius, -radius));
-        vertexes.add(center.sum(-radius, radius));
-        vertexes.add(center.sum(-radius, -radius));
+        vertexes.add(super.center.sum(super.apothem, super.apothem));
+        vertexes.add(super.center.sum(super.apothem, -super.apothem));
+        vertexes.add(super.center.sum(-super.apothem, super.apothem));
+        vertexes.add(super.center.sum(-super.apothem, -super.apothem));
         return vertexes;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return super.apothem * 8d;
+    }
+
+    @Override
+    public double getSurface() {
+        return Math.pow(super.apothem * 2d, 2d);
     }
 }

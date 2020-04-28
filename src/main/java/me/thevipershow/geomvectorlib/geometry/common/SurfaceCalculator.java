@@ -13,6 +13,6 @@
 
 package me.thevipershow.geomvectorlib.geometry.common;
 
-public interface SolidCalculator extends SurfaceCalculator{
-    double getVolume();
+public interface SurfaceCalculator {
+    double getSurface();
 }

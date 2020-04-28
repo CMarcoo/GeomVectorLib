@@ -32,8 +32,8 @@ public class CirclePlane extends CircularPlaneShape {
         final Set<DoublePair> doublePairSet = new HashSet<>();
         for (double i = 0d; i < Math.toRadians(degrees); i += Math.toRadians(distribution)) {
             doublePairSet.add(new DoublePair(
-                    (radius * Math.sin(i)) + center.getFirst(),
-                    (radius * Math.cos(i)) + center.getSecond()
+                    (super.radius * Math.sin(i)) + super.center.getFirst(),
+                    (super.radius * Math.cos(i)) + super.center.getSecond()
             ));
         }
         return doublePairSet;
@@ -54,8 +54,9 @@ public class CirclePlane extends CircularPlaneShape {
      * @return the surface of this circle from the radius
      * {@see <a href="https://en.wikipedia.org/wiki/Circle#Area_enclosed">Circle surface</a>}
      */
-    public double calculateSurface() {
-        return (Math.PI * Math.pow(radius, 2d));
+    @Override
+    public double getSurface() {
+        return (Math.PI * Math.pow(super.radius, 2d));
     }
 
     /**
@@ -64,7 +65,8 @@ public class CirclePlane extends CircularPlaneShape {
      * @return the length of the circumference from the radius
      * {@see <a href="https://en.wikipedia.org/wiki/Circle#Length_of_circumference">Circle circumference</a>}
      */
-    public double calculateCircumference() {
-        return (Math.PI * (radius * 2));
+    @Override
+    public double getPerimeter() {
+        return (Math.PI * (super.radius * 2));
     }
 }
