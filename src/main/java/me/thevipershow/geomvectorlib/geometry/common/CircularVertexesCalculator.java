@@ -15,8 +15,6 @@ package me.thevipershow.geomvectorlib.geometry.common;
 
 import java.util.Set;
 
-public interface GeometryCalculator<T> {
+public interface CircularVertexesCalculator<T> {
     Set<T> calculateVertexes(double delta);
-
-    double calculateSurface();
 }

@@ -11,12 +11,11 @@
  *
  */
 
-package me.thevipershow.geomvectorlib.geometry.solids;
+package me.thevipershow.geomvectorlib.geometry.common;
 
 import java.util.Set;
-import me.thevipershow.geomvectorlib.geometry.common.GeometryCalculator;
-import me.thevipershow.geomvectorlib.triples.DoubleTriple;
+import me.thevipershow.geomvectorlib.geometry.planes.types.CirclePlane;
 
-public interface SolidCalculator extends GeometryCalculator<Set<DoubleTriple>> {
-    double calculateVolume();
+public interface SphericalVertexesCalculator {
+    Set<CirclePlane> calculateVertexes(double delta);
 }

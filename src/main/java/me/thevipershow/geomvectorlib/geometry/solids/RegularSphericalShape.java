@@ -11,25 +11,23 @@
  *
  */
 
-package me.thevipershow.geomvectorlib.geometry.planes;
+package me.thevipershow.geomvectorlib.geometry.solids;
 
-import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
-import me.thevipershow.geomvectorlib.pairs.DoublePair;
+import me.thevipershow.geomvectorlib.geometry.common.SolidCalculator;
+import me.thevipershow.geomvectorlib.geometry.common.SphericalVertexesCalculator;
+import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 
-public abstract class RegularPlaneShape implements VertexesCalculator<DoublePair> {
-    protected final int sides;
+public abstract class RegularSphericalShape implements SphericalVertexesCalculator, SolidCalculator {
+    protected final DoubleTriple center;
     protected final double radius;
-    protected final DoublePair center;
 
-    public RegularPlaneShape(int sides, double radius, DoublePair center) {
-        this.sides = sides;
-        this.radius = radius;
+    public RegularSphericalShape(DoubleTriple center, double radius) {
         this.center = center;
+        this.radius = radius;
     }
 
-    public RegularPlaneShape(int sides, double radius, final double x1, final double y1) {
-        this.sides = sides;
+    public RegularSphericalShape(double x, double y, double z, double radius) {
+        this.center = new DoubleTriple(x, y, z);
         this.radius = radius;
-        this.center = new DoublePair(x1, y1);
     }
 }

@@ -15,16 +15,17 @@ package me.thevipershow.geomvectorlib.geometry.planes.types;
 
 import java.util.HashSet;
 import java.util.Set;
-import me.thevipershow.geomvectorlib.geometry.planes.RegularPlaneShape;
+import me.thevipershow.geomvectorlib.geometry.planes.CircularPlaneShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 
-public class CirclePlane extends RegularPlaneShape {
+public class CirclePlane extends CircularPlaneShape {
+
     public CirclePlane(double radius, DoublePair center) {
-        super(1, radius, center);
+        super(radius, center);
     }
 
-    public CirclePlane(double radius, double x1, double y1) {
-        super(1, radius, x1, y1);
+    public CirclePlane(double radius, double x, double y) {
+        super(radius, x, y);
     }
 
     private Set<DoublePair> getCircleVertexes(double distribution, double degrees) {
@@ -39,12 +40,12 @@ public class CirclePlane extends RegularPlaneShape {
     }
 
     @Override
-    public Set<DoublePair> calculateVertexes(double distribution) {
-        return getCircleVertexes(distribution, 360d);
+    public Set<DoublePair> calculateVertexes(double delta) {
+        return getCircleVertexes(delta, 360d);
     }
 
-    public Set<DoublePair> calculateVertexes(double distribution, double degrees) {
-        return getCircleVertexes(distribution, degrees);
+    public Set<DoublePair> calculateVertexes(double delta, double degrees) {
+        return getCircleVertexes(delta, degrees);
     }
 
     /**
@@ -53,7 +54,6 @@ public class CirclePlane extends RegularPlaneShape {
      * @return the surface of this circle from the radius
      * {@see <a href="https://en.wikipedia.org/wiki/Circle#Area_enclosed">Circle surface</a>}
      */
-    @Override
     public double calculateSurface() {
         return (Math.PI * Math.pow(radius, 2d));
     }

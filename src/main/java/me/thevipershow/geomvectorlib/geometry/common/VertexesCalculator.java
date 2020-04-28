@@ -11,10 +11,10 @@
  *
  */
 
-package me.thevipershow.geomvectorlib.geometry.planes;
+package me.thevipershow.geomvectorlib.geometry.common;
 
-import me.thevipershow.geomvectorlib.geometry.common.GeometryCalculator;
-import me.thevipershow.geomvectorlib.pairs.DoublePair;
+import java.util.Set;
 
-public interface PlaneCalculator extends GeometryCalculator<DoublePair> {
+public interface VertexesCalculator<T> {
+    Set<T> calculateVertexes();
 }
