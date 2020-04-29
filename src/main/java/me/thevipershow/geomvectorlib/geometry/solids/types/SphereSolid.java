@@ -29,10 +29,10 @@ public class SphereSolid extends RegularSphericalShape {
     public Set<CirclePlane> calculateVertexes(double delta) {
         final Set<CirclePlane> circlePlaneSet = new HashSet<>();
         final Set<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180.d);
-        for (final DoublePair dp : dummyCircle) {
-            final double currentRadius = Math.abs(dp.getFirst() - super.center.getFirst());
-            circlePlaneSet.add(new CirclePlane(currentRadius, dp.getSecond(), dp.getFirst()));
-        }
+        dummyCircle.forEach(doublePair ->
+                circlePlaneSet.add(new CirclePlane(Math.abs(super.center.getFirst() - doublePair.getFirst()),
+                        super.center.getFirst(),
+                        doublePair.getSecond())));
         return circlePlaneSet;
     }
 

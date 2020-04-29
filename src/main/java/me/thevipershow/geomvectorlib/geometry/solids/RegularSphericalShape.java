@@ -21,12 +21,12 @@ public abstract class RegularSphericalShape implements SphericalVertexesCalculat
     protected final DoubleTriple center;
     protected final double radius;
 
-    public RegularSphericalShape(DoubleTriple center, double radius) {
+    public RegularSphericalShape(final DoubleTriple center, final double radius) {
         this.center = center;
         this.radius = radius;
     }
 
-    public RegularSphericalShape(double x, double y, double z, double radius) {
+    public RegularSphericalShape(final double x, final double y, final double z, final double radius) {
         this.center = new DoubleTriple(x, y, z);
         this.radius = radius;
     }
