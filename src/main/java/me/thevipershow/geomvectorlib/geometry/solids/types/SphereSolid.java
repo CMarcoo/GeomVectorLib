@@ -31,7 +31,7 @@ public class SphereSolid extends RegularSphericalShape {
         final Set<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180.d);
         for (final DoublePair dp : dummyCircle) {
             final double currentRadius = Math.abs(dp.getFirst() - super.center.getFirst());
-            circlePlaneSet.add(new CirclePlane(currentRadius, dp.getFirst(), dp.getSecond()));
+            circlePlaneSet.add(new CirclePlane(currentRadius, dp.getSecond(), dp.getFirst()));
         }
         return circlePlaneSet;
     }
