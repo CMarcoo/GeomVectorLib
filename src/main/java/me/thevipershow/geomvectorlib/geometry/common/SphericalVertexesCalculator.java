@@ -13,10 +13,10 @@
 
 package me.thevipershow.geomvectorlib.geometry.common;
 
-import java.util.Set;
+import java.util.List;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 import org.jetbrains.annotations.NotNull;
 
 public interface SphericalVertexesCalculator {
-    @NotNull Set<DoubleTriple> calculateVertexes(final double delta);
+    @NotNull List<DoubleTriple> calculateVertexes(final double delta);
 }

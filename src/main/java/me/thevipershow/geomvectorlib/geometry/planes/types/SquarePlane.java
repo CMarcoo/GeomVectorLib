@@ -13,7 +13,9 @@
 
 package me.thevipershow.geomvectorlib.geometry.planes.types;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import me.thevipershow.geomvectorlib.geometry.planes.RegularPlaneShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
@@ -32,8 +34,8 @@ public class SquarePlane extends RegularPlaneShape {
 
     @NotNull
     @Override
-    public Set<DoublePair> calculateVertexes() {
-        final Set<DoublePair> vertexes = new HashSet<>();
+    public List<DoublePair> calculateVertexes() {
+        final List<DoublePair> vertexes = new ArrayList<>();
         vertexes.add(super.center.sum(super.apothem, super.apothem));
         vertexes.add(super.center.sum(super.apothem, -super.apothem));
         vertexes.add(super.center.sum(-super.apothem, super.apothem));

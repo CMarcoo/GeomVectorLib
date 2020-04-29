@@ -13,8 +13,8 @@
 
 package me.thevipershow.geomvectorlib.geometry.solids;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,8 +59,8 @@ public final class TridimensionalUtils {
      * @return A Set of DoubleTriple objects that represent a 'connection' between two points in space.
      */
     @NotNull
-    public static Set<DoubleTriple> joinTwoSpacePoints(@NotNull final DoubleTriple firstPoint,@NotNull final DoubleTriple secondPoint, final double delta) {
-        final Set<DoubleTriple> doubleTripleSet = new HashSet<>();
+    public static List<DoubleTriple> joinTwoSpacePoints(@NotNull final DoubleTriple firstPoint,@NotNull final DoubleTriple secondPoint, final double delta) {
+        final List<DoubleTriple> doubleTripleSet = new ArrayList<>();
         final DoubleTriple resultDoubleTriple = new DoubleTriple((secondPoint.getFirst() - firstPoint.getFirst()),
                 (secondPoint.getSecond() - firstPoint.getSecond()),
                 (secondPoint.getThird() - firstPoint.getThird()));

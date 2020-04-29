@@ -13,9 +13,9 @@
 
 package me.thevipershow.geomvectorlib.geometry.common;
 
-import java.util.Set;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 public interface VertexesCalculator<T> {
-    @NotNull Set<T> calculateVertexes();
+    @NotNull List<T> calculateVertexes();
 }

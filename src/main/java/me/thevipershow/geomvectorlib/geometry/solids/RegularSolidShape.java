@@ -20,11 +20,11 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class RegularSolidShape implements VertexesCalculator<DoubleTriple>, SolidCalculator {
     protected final @NotNull DoubleTriple center;
-    protected final double radius;
+    protected final double apothem;
 
     @NotNull
-    public RegularSolidShape(@NotNull final DoubleTriple center, final double radius) {
+    public RegularSolidShape(@NotNull final DoubleTriple center, final double apothem) {
         this.center = center;
-        this.radius = radius;
+        this.apothem = apothem;
     }
 }

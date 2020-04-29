@@ -13,8 +13,8 @@
 
 package me.thevipershow.geomvectorlib.geometry.planes.types;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import me.thevipershow.geomvectorlib.geometry.planes.CircularPlaneShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 import org.jetbrains.annotations.NotNull;
@@ -32,8 +32,8 @@ public class CirclePlane extends CircularPlaneShape {
     }
 
     @NotNull
-    private Set<DoublePair> getCircleVertexes(final double delta, final double degrees) {
-        final Set<DoublePair> doublePairSet = new HashSet<>();
+    private List<DoublePair> getCircleVertexes(final double delta, final double degrees) {
+        final List<DoublePair> doublePairSet = new ArrayList<>();
         for (double i = 0d; i < Math.toRadians(degrees); i += Math.toRadians(delta)) {
             doublePairSet.add(new DoublePair(
                     (super.radius * Math.sin(i)) + super.center.getFirst(),
@@ -45,12 +45,12 @@ public class CirclePlane extends CircularPlaneShape {
 
     @NotNull
     @Override
-    public Set<DoublePair> calculateVertexes(final double delta) {
+    public List<DoublePair> calculateVertexes(final double delta) {
         return getCircleVertexes(delta, 360d);
     }
 
     @NotNull
-    public Set<DoublePair> calculateVertexes(final double delta, final double degrees) {
+    public List<DoublePair> calculateVertexes(final double delta, final double degrees) {
         return getCircleVertexes(delta, degrees);
     }
 

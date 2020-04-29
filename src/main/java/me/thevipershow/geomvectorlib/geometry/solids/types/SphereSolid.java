@@ -13,8 +13,8 @@
 
 package me.thevipershow.geomvectorlib.geometry.solids.types;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import me.thevipershow.geomvectorlib.geometry.planes.types.CirclePlane;
 import me.thevipershow.geomvectorlib.geometry.solids.RegularSphericalShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
@@ -29,10 +29,10 @@ public class SphereSolid extends RegularSphericalShape {
 
     @NotNull
     @Override
-    public Set<DoubleTriple> calculateVertexes(final double delta) {
-        final Set<DoubleTriple> doubleTriplesSet = new HashSet<>();
-        final Set<DoublePair> dummyCircle = new HashSet<>(
-                new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d));
+    public List<DoubleTriple> calculateVertexes(final double delta) {
+        final List<DoubleTriple> doubleTriplesSet = new ArrayList<>();
+        final List<DoublePair> dummyCircle = new ArrayList<>();
+                new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d);
         for (final DoublePair pair : dummyCircle) {
             final double currentRadius = Math.abs(pair.getFirst() - super.center.getFirst());
             final CirclePlane currentCircle = new CirclePlane(currentRadius, center.getFirst(), center.getThird());
