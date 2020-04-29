@@ -14,7 +14,8 @@
 package me.thevipershow.geomvectorlib.geometry.common;
 
 import java.util.Set;
+import org.jetbrains.annotations.NotNull;
 
 public interface CircularVertexesCalculator<T> {
-    Set<T> calculateVertexes(double delta);
+    @NotNull Set<T> calculateVertexes(final double delta);
 }

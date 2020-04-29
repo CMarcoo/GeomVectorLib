@@ -19,18 +19,23 @@ import me.thevipershow.geomvectorlib.geometry.planes.types.CirclePlane;
 import me.thevipershow.geomvectorlib.geometry.solids.RegularSphericalShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
+import org.jetbrains.annotations.NotNull;
 
 public class SphereSolid extends RegularSphericalShape {
-    public SphereSolid(DoubleTriple center, double radius) {
+    @NotNull
+    public SphereSolid(@NotNull final DoubleTriple center, final double radius) {
         super(center, radius);
     }
 
+    @NotNull
     @Override
-    public Set<CirclePlane> calculateVertexes(double delta) {
+    public Set<CirclePlane> calculateVertexes(final double delta) {
         final Set<CirclePlane> circlePlaneSet = new HashSet<>();
-        final Set<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d);
+        final Set<DoublePair> dummyCircle = new CirclePlane(super.radius,
+                super.center.getFirst(),
+                super.center.getSecond()).calculateVertexes(delta, 180d);
         dummyCircle.forEach(doublePair ->
-                circlePlaneSet.add(new CirclePlane(Math.abs(super.center.getFirst() - Math.abs(doublePair.getFirst())),
+                circlePlaneSet.add(new CirclePlane(Math.abs(doublePair.getFirst() - center.getFirst()),
                         super.center.getFirst(),
                         doublePair.getSecond())));
         return circlePlaneSet;

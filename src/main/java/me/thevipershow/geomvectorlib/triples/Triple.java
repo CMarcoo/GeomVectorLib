@@ -11,32 +11,35 @@
  */
 package me.thevipershow.geomvectorlib.triples;
 
+import org.jetbrains.annotations.NotNull;
+
+
 public interface Triple<A, B, C> {
     /**
      * Get the first value
      *
      * @return an Object that represent the first value of the pair.
      */
-    A getFirst();
+    @NotNull A getFirst();
 
     /**
      * Get the second value
      *
      * @return an Object that represent the second value of the pair.
      */
-    B getSecond();
+    @NotNull B getSecond();
 
     /**
      * Get the third value
      *
      * @return an Object that represent the third value of the pair.
      */
-    C getThird();
+    @NotNull C getThird();
 
     /**
      * Return a new Triple with swapped elements
      *
      * @return the previous pair but with swapped values
      */
-    Triple<C, B, A> swapElements();
+    @NotNull Triple<C, B, A> swapElements();
 }

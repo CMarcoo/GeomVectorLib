@@ -13,17 +13,17 @@
 
 package me.thevipershow.geomvectorlib.geometry.solids;
 
-import java.util.Set;
 import me.thevipershow.geomvectorlib.geometry.common.SolidCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class RegularSolidShape implements VertexesCalculator<DoubleTriple>, SolidCalculator {
-    protected final DoubleTriple center;
-    protected Set<DoubleTriple> vertexes;
+    protected final @NotNull DoubleTriple center;
     protected final double radius;
 
-    public RegularSolidShape(final DoubleTriple center, final double radius) {
+    @NotNull
+    public RegularSolidShape(@NotNull final DoubleTriple center, final double radius) {
         this.center = center;
         this.radius = radius;
     }

@@ -12,9 +12,11 @@
  */
 package me.thevipershow.geomvectorlib.pairs;
 
+import org.jetbrains.annotations.NotNull;
+
 public class GenericPair<A, B> implements Pair<A, B> {
-    private final A first;  // The first element of this pair
-    private final B second; // The second element of this pair
+    private final @NotNull A first;  // The first element of this pair
+    private final @NotNull B second; // The second element of this pair
 
     /**
      * Creates a new Pair with two objects stored in order.
@@ -22,7 +24,7 @@ public class GenericPair<A, B> implements Pair<A, B> {
      * @param first  the first element.
      * @param second the second element.
      */
-    public GenericPair(A first, B second) {
+    public @NotNull GenericPair(@NotNull final A first, @NotNull final B second) {
         this.first = first;
         this.second = second;
     }

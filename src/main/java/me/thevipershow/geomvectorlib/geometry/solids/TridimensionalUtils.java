@@ -16,6 +16,7 @@ package me.thevipershow.geomvectorlib.geometry.solids;
 import java.util.HashSet;
 import java.util.Set;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
+import org.jetbrains.annotations.NotNull;
 
 public final class TridimensionalUtils {
     /**
@@ -25,7 +26,7 @@ public final class TridimensionalUtils {
      * @param secondPoint the DoubleTriple representing the second point
      * @return the exact distance between the two points in space
      */
-    public static double distanceBetweenSpacePoints(final DoubleTriple firstPoint, final DoubleTriple secondPoint) {
+    public static double distanceBetweenSpacePoints(@NotNull final DoubleTriple firstPoint, @NotNull final DoubleTriple secondPoint) {
         final double differenceX = secondPoint.getFirst() - firstPoint.getFirst();
         final double differenceY = secondPoint.getSecond() - firstPoint.getSecond();
         final double differenceZ = secondPoint.getThird() - firstPoint.getThird();
@@ -57,7 +58,8 @@ public final class TridimensionalUtils {
      *                    This value should usually be a double from 0.0 to 1.0
      * @return A Set of DoubleTriple objects that represent a 'connection' between two points in space.
      */
-    public static Set<DoubleTriple> joinTwoSpacePoints(final DoubleTriple firstPoint, final DoubleTriple secondPoint, final double delta) {
+    @NotNull
+    public static Set<DoubleTriple> joinTwoSpacePoints(@NotNull final DoubleTriple firstPoint,@NotNull final DoubleTriple secondPoint, final double delta) {
         final Set<DoubleTriple> doubleTripleSet = new HashSet<>();
         final DoubleTriple resultDoubleTriple = new DoubleTriple((secondPoint.getFirst() - firstPoint.getFirst()),
                 (secondPoint.getSecond() - firstPoint.getSecond()),

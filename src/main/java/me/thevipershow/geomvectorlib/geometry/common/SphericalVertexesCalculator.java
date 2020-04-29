@@ -15,7 +15,8 @@ package me.thevipershow.geomvectorlib.geometry.common;
 
 import java.util.Set;
 import me.thevipershow.geomvectorlib.geometry.planes.types.CirclePlane;
+import org.jetbrains.annotations.NotNull;
 
 public interface SphericalVertexesCalculator {
-    Set<CirclePlane> calculateVertexes(double delta);
+    @NotNull Set<CirclePlane> calculateVertexes(final double delta);
 }

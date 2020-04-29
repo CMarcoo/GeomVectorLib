@@ -17,16 +17,20 @@ import java.util.HashSet;
 import java.util.Set;
 import me.thevipershow.geomvectorlib.geometry.planes.RegularPlaneShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
+import org.jetbrains.annotations.NotNull;
 
 public class SquarePlane extends RegularPlaneShape {
-    public SquarePlane(int sides, double radius, DoublePair center) {
+    @NotNull
+    public SquarePlane(final int sides, final double radius, @NotNull final DoublePair center) {
         super(sides, radius, center);
     }
 
-    public SquarePlane(int sides, double radius, double x1, double y1) {
+    @NotNull
+    public SquarePlane(final int sides, final double radius, final double x1, final double y1) {
         super(sides, radius, x1, y1);
     }
 
+    @NotNull
     @Override
     public Set<DoublePair> calculateVertexes() {
         final Set<DoublePair> vertexes = new HashSet<>();

@@ -12,10 +12,13 @@
  */
 package me.thevipershow.geomvectorlib.triples;
 
+import org.jetbrains.annotations.NotNull;
+
 public class DoubleTriple implements Triple<Double, Double, Double> {
     private final double first, second, third; // the first, second and third values.
 
-    public DoubleTriple(double first, double second, double third) {
+    @NotNull
+    public DoubleTriple(final double first, final double second, final double third) {
         this.first = first;
         this.second = second;
         this.third = third;
@@ -26,6 +29,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      *
      * @return an Object that represent the first value of the pair.
      */
+    @NotNull
     @Override
     public final Double getFirst() {
         return first;
@@ -36,6 +40,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      *
      * @return an Object that represent the second value of the pair.
      */
+    @NotNull
     @Override
     public final Double getSecond() {
         return second;
@@ -46,6 +51,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      *
      * @return an Object that represent the third value of the pair.
      */
+    @NotNull
     @Override
     public final Double getThird() {
         return third;
@@ -56,6 +62,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      *
      * @return the previous pair but with swapped values
      */
+    @NotNull
     @Override
     public Triple<Double, Double, Double> swapElements() {
         return new DoubleTriple(third, second, first);
@@ -83,7 +90,8 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param <T>          must extend {@link DoubleTriple}
      * @return a new DoubleTriple with the new values
      */
-    public <T extends DoubleTriple> DoubleTriple sum(final T doubleTriple) {
+    @NotNull
+    public <T extends DoubleTriple> DoubleTriple sum(@NotNull final T doubleTriple) {
         return new DoubleTriple((first + doubleTriple.getFirst()), (second + doubleTriple.getSecond()), (third + doubleTriple.getThird()));
     }
 
@@ -95,6 +103,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param third  the value that will be summed to the third double
      * @return a new DoubleTriple with the new values
      */
+    @NotNull
     public DoubleTriple sum(final double first, final double second, final double third) {
         return new DoubleTriple((this.first + first), (this.second + second), (this.third + third));
     }
@@ -106,7 +115,8 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param <T>          must extend {@link DoubleTriple}
      * @return a new DoubleTriple with the new values
      */
-    public <T extends DoubleTriple> DoubleTriple subtract(final T doubleTriple) {
+    @NotNull
+    public <T extends DoubleTriple> DoubleTriple subtract(@NotNull final T doubleTriple) {
         return new DoubleTriple((first - doubleTriple.getFirst()), (second - doubleTriple.getSecond()), (third - doubleTriple.getThird()));
     }
 
@@ -118,6 +128,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param third  the value that will be subtracted to the third double
      * @return a new DoubleTriple with the new values
      */
+    @NotNull
     public DoubleTriple subtract(final double first, final double second, final double third) {
         return new DoubleTriple((this.first - first), (this.second - second), (this.third - third));
     }
@@ -130,7 +141,8 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @return a new DoubleTriple with the new values
      * {@see <a href="https://en.wikipedia.org/wiki/Cross_product"></a>}
      */
-    public <T extends DoubleTriple> DoubleTriple crossProduct(final T doubleTriple) {
+    @NotNull
+    public <T extends DoubleTriple> DoubleTriple crossProduct(@NotNull final T doubleTriple) {
         return new DoubleTriple(((second * doubleTriple.getThird()) - (third * doubleTriple.getSecond())),
                 ((third * doubleTriple.getFirst()) - (first * doubleTriple.getThird())),
                 ((first * doubleTriple.getSecond()) - (second * doubleTriple.getFirst())));
@@ -145,6 +157,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @return a new DoubleTriple with the new values
      * {@see <a href="https://en.wikipedia.org/wiki/Cross_product"></a>}
      */
+    @NotNull
     public DoubleTriple crossProduct(final double first, final double second, final double third) {
         return new DoubleTriple(((this.second * third) - (this.third * second)),
                 ((this.third * first) - (this.first * third)),
@@ -159,7 +172,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @return the scalar product between the two points
      * {@see <a href="https://en.wikipedia.org/wiki/Dot_product">Scalar Product</a>}
      */
-    public <T extends DoubleTriple> double scalarProduct(final T doubleTriple) {
+    public <T extends DoubleTriple> double scalarProduct(@NotNull final T doubleTriple) {
         return ((first * doubleTriple.getFirst()) + (second * doubleTriple.getSecond()) + (third * doubleTriple.getThird()));
     }
 
@@ -182,6 +195,7 @@ public class DoubleTriple implements Triple<Double, Double, Double> {
      * @param value the double value that will multiply every current value
      * @return a new DoubleTriple with the new values
      */
+    @NotNull
     public DoubleTriple resize(final double value) {
         return new DoubleTriple((first * value), (second * value), (third * value));
     }

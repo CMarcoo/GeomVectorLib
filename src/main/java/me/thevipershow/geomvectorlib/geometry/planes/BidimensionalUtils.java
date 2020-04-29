@@ -14,6 +14,7 @@
 package me.thevipershow.geomvectorlib.geometry.planes;
 
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
+import org.jetbrains.annotations.NotNull;
 
 public final class BidimensionalUtils {
     /**
@@ -23,7 +24,7 @@ public final class BidimensionalUtils {
      * @param secondPoint the DoubleTriple representing the second point
      * @return the exact distance between the two points in the plane
      */
-    public static double distanceBetweenPlanePoints(final DoublePair firstPoint, final DoublePair secondPoint) {
+    public static double distanceBetweenPlanePoints(@NotNull final DoublePair firstPoint,@NotNull final DoublePair secondPoint) {
         final double differenceX = secondPoint.getFirst() - firstPoint.getFirst();
         final double differenceY = secondPoint.getSecond() - firstPoint.getSecond();
         return Math.sqrt((Math.pow(differenceX, 2d) + Math.pow(differenceY, 2d)));

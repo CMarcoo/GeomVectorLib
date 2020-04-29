@@ -17,18 +17,22 @@ import java.util.HashSet;
 import java.util.Set;
 import me.thevipershow.geomvectorlib.geometry.planes.CircularPlaneShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
+import org.jetbrains.annotations.NotNull;
 
 public class CirclePlane extends CircularPlaneShape {
 
-    public CirclePlane(double radius, DoublePair center) {
+    @NotNull
+    public CirclePlane(final double radius, @NotNull final DoublePair center) {
         super(radius, center);
     }
 
-    public CirclePlane(double radius, double x, double y) {
+    @NotNull
+    public CirclePlane(final double radius, final double x, final double y) {
         super(radius, x, y);
     }
 
-    private Set<DoublePair> getCircleVertexes(double distribution, double degrees) {
+    @NotNull
+    private Set<DoublePair> getCircleVertexes(final double distribution, final double degrees) {
         final Set<DoublePair> doublePairSet = new HashSet<>();
         for (double i = 0d; i < Math.toRadians(degrees); i += Math.toRadians(distribution)) {
             doublePairSet.add(new DoublePair(
@@ -39,12 +43,14 @@ public class CirclePlane extends CircularPlaneShape {
         return doublePairSet;
     }
 
+    @NotNull
     @Override
-    public Set<DoublePair> calculateVertexes(double delta) {
+    public Set<DoublePair> calculateVertexes(final double delta) {
         return getCircleVertexes(delta, 360d);
     }
 
-    public Set<DoublePair> calculateVertexes(double delta, double degrees) {
+    @NotNull
+    public Set<DoublePair> calculateVertexes(final double delta, final double degrees) {
         return getCircleVertexes(delta, degrees);
     }
 

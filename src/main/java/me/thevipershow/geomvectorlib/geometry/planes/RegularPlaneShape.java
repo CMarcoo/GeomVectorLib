@@ -16,19 +16,22 @@ package me.thevipershow.geomvectorlib.geometry.planes;
 import me.thevipershow.geomvectorlib.geometry.common.PlaneCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class RegularPlaneShape implements VertexesCalculator<DoublePair>, PlaneCalculator {
     protected final int sides;
     protected final double apothem;
-    protected final DoublePair center;
+    protected final @NotNull DoublePair center;
 
-    public RegularPlaneShape(int sides, double apothem, DoublePair center) {
+    @NotNull
+    public RegularPlaneShape(final int sides, final double apothem, @NotNull final DoublePair center) {
         this.sides = sides;
         this.apothem = apothem;
         this.center = center;
     }
 
-    public RegularPlaneShape(int sides, double apothem, final double x1, final double y1) {
+    @NotNull
+    public RegularPlaneShape(final int sides, final double apothem, final double x1, final double y1) {
         this.sides = sides;
         this.apothem = apothem;
         this.center = new DoublePair(x1, y1);

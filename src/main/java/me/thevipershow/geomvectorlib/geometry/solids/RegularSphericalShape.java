@@ -16,16 +16,19 @@ package me.thevipershow.geomvectorlib.geometry.solids;
 import me.thevipershow.geomvectorlib.geometry.common.SolidCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.SphericalVertexesCalculator;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class RegularSphericalShape implements SphericalVertexesCalculator, SolidCalculator {
-    protected final DoubleTriple center;
+    protected final @NotNull DoubleTriple center;
     protected final double radius;
 
-    public RegularSphericalShape(final DoubleTriple center, final double radius) {
+    @NotNull
+    public RegularSphericalShape(@NotNull final DoubleTriple center, final double radius) {
         this.center = center;
         this.radius = radius;
     }
 
+    @NotNull
     public RegularSphericalShape(final double x, final double y, final double z, final double radius) {
         this.center = new DoubleTriple(x, y, z);
         this.radius = radius;

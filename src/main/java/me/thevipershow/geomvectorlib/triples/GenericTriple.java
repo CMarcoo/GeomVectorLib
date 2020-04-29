@@ -12,12 +12,16 @@
  */
 package me.thevipershow.geomvectorlib.triples;
 
-public class GenericTriple<A, B, C> implements Triple<A, B, C> {
-    private final A first; //the first object
-    private final B second; //the second object
-    private final C third; //the third object
+import org.jetbrains.annotations.NotNull;
 
-    public GenericTriple(A first, B second, C third) {
+
+public class GenericTriple<A, B, C> implements Triple<A, B, C> {
+    private final @NotNull A first; //the first object
+    private final @NotNull B second; //the second object
+    private final @NotNull C third; //the third object
+
+    @NotNull
+    public GenericTriple(@NotNull final A first, @NotNull final B second, @NotNull final C third) {
         this.first = first;
         this.second = second;
         this.third = third;
@@ -28,6 +32,7 @@ public class GenericTriple<A, B, C> implements Triple<A, B, C> {
      *
      * @return an Object that represent the first value of the pair.
      */
+    @NotNull
     @Override
     public A getFirst() {
         return first;
@@ -38,6 +43,7 @@ public class GenericTriple<A, B, C> implements Triple<A, B, C> {
      *
      * @return an Object that represent the second value of the pair.
      */
+    @NotNull
     @Override
     public B getSecond() {
         return second;
@@ -48,6 +54,7 @@ public class GenericTriple<A, B, C> implements Triple<A, B, C> {
      *
      * @return an Object that represent the third value of the pair.
      */
+    @NotNull
     @Override
     public C getThird() {
         return third;
@@ -58,6 +65,7 @@ public class GenericTriple<A, B, C> implements Triple<A, B, C> {
      *
      * @return the previous pair but with swapped values
      */
+    @NotNull
     @Override
     public Triple<C, B, A> swapElements() {
         return new GenericTriple<>(third, second, first);

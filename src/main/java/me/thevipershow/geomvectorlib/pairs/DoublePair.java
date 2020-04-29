@@ -12,10 +12,12 @@
  */
 package me.thevipershow.geomvectorlib.pairs;
 
+import org.jetbrains.annotations.NotNull;
+
 public class DoublePair implements Pair<Double, Double> {
     private final double first, second; // the first and second values
 
-    public DoublePair(double first, double second) {
+    public @NotNull DoublePair(double first, double second) {
         this.first = first;
         this.second = second;
     }
@@ -45,6 +47,7 @@ public class DoublePair implements Pair<Double, Double> {
      *
      * @return the previous pair but with swapped values.
      */
+    @NotNull
     @Override
     public DoublePair swapElements() {
         return new DoublePair(second, first);
@@ -71,7 +74,7 @@ public class DoublePair implements Pair<Double, Double> {
      * @return the scalar product between the two DoublePairs
      * {@see <a href="https://en.wikipedia.org/wiki/Dot_product">Scalar Product</a>}
      */
-    public <T extends DoublePair> double scalarProduct(final T doublePair) {
+    public <T extends DoublePair> double scalarProduct(@NotNull final T doublePair) {
         return ((first * doublePair.getFirst()) + (second * doublePair.getSecond()));
     }
 
@@ -94,7 +97,8 @@ public class DoublePair implements Pair<Double, Double> {
      * @param <T>        must extend {@link DoublePair}
      * @return a new DoublePair with the new values
      */
-    public <T extends DoublePair> DoublePair sum(final T doublePair) {
+    @NotNull
+    public <T extends DoublePair> DoublePair sum(@NotNull final T doublePair) {
         return new DoublePair((first + doublePair.getFirst()), (second + doublePair.getSecond()));
     }
 
@@ -105,6 +109,7 @@ public class DoublePair implements Pair<Double, Double> {
      * @param second the value that will be summed to the second double
      * @return a new DoublePair with the new values
      */
+    @NotNull
     public DoublePair sum(final double first, double second) {
         return new DoublePair((this.first + first), (this.second + second));
     }
@@ -116,7 +121,8 @@ public class DoublePair implements Pair<Double, Double> {
      * @param <T>        must extend {@link DoublePair}
      * @return a new DoublePair with the new values
      */
-    public <T extends DoublePair> DoublePair subtract(final T doublePair) {
+    @NotNull
+    public <T extends DoublePair> DoublePair subtract(@NotNull final T doublePair) {
         return new DoublePair((this.first - doublePair.getFirst()), (this.second - doublePair.getSecond()));
     }
 
@@ -127,6 +133,7 @@ public class DoublePair implements Pair<Double, Double> {
      * @param second the value that will be subtracted to the second double
      * @return a new DoublePair with the new values
      */
+    @NotNull
     public DoublePair subtract(final double first, double second) {
         return new DoublePair((this.first - first), (this.second - second));
     }
@@ -137,6 +144,7 @@ public class DoublePair implements Pair<Double, Double> {
      * @param value a double value
      * @return the new resized DoublePair
      */
+    @NotNull
     public DoublePair resize(final double value) {
         return new DoublePair((first * value), (second * value));
     }
