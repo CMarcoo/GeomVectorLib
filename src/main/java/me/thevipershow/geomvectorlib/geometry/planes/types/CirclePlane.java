@@ -34,7 +34,7 @@ public class CirclePlane extends CircularPlaneShape {
     @NotNull
     private Set<DoublePair> getCircleVertexes(final double distribution, final double degrees) {
         final Set<DoublePair> doublePairSet = new HashSet<>();
-        for (double i = 0d; i < Math.toRadians(degrees); i += Math.toRadians(distribution)) {
+        for (double i = 0d; i < Math.toRadians(degrees); i += distribution) {
             doublePairSet.add(new DoublePair(
                     (super.radius * Math.sin(i)) + super.center.getFirst(),
                     (super.radius * Math.cos(i)) + super.center.getSecond()
