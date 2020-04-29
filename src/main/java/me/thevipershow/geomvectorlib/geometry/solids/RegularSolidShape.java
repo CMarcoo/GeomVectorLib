@@ -19,9 +19,9 @@ import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 
 public abstract class RegularSolidShape implements VertexesCalculator<DoubleTriple>, SolidCalculator {
-    protected DoubleTriple center;
+    protected final DoubleTriple center;
     protected Set<DoubleTriple> vertexes;
-    protected double radius;
+    protected final double radius;
 
     public RegularSolidShape(final DoubleTriple center, final double radius) {
         this.center = center;
