@@ -28,9 +28,9 @@ public class SphereSolid extends RegularSphericalShape {
     @Override
     public Set<CirclePlane> calculateVertexes(double delta) {
         final Set<CirclePlane> circlePlaneSet = new HashSet<>();
-        final Set<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180.d);
+        final Set<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d);
         dummyCircle.forEach(doublePair ->
-                circlePlaneSet.add(new CirclePlane(Math.abs(super.center.getFirst() - doublePair.getFirst()),
+                circlePlaneSet.add(new CirclePlane(Math.abs(super.center.getFirst() - Math.abs(doublePair.getFirst())),
                         super.center.getFirst(),
                         doublePair.getSecond())));
         return circlePlaneSet;
