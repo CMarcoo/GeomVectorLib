@@ -58,12 +58,12 @@ public class CirclePlane extends CircularPlaneShape {
 
     @NotNull
     @Override
-    public List<DoublePair> calculateVertexes(final double delta) {
+    public List<DoublePair> calculateSpacedLines(final double delta) {
         return getCircleVertexes(delta, 360d);
     }
 
     @NotNull
-    public List<DoublePair> calculateVertexes(final double delta, final double degrees) {
+    public List<DoublePair> calculateSpacedLines(final double delta, final double degrees) {
         return getCircleVertexes(delta, degrees);
     }
 

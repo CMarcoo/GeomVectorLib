@@ -13,12 +13,12 @@
 
 package me.thevipershow.geomvectorlib.geometry.planes;
 
-import me.thevipershow.geomvectorlib.geometry.common.CircularVertexesCalculator;
+import me.thevipershow.geomvectorlib.geometry.common.SpacedLinesCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.PlaneCalculator;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class CircularPlaneShape implements CircularVertexesCalculator<DoublePair>, PlaneCalculator {
+public abstract class CircularPlaneShape implements SpacedLinesCalculator<DoublePair>, PlaneCalculator {
     protected final double radius;
     protected final @NotNull DoublePair center;
 

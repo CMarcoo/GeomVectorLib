@@ -28,19 +28,20 @@ package me.thevipershow.geomvectorlib.geometry.planes.types.regular;
 
 import java.util.ArrayList;
 import java.util.List;
+import me.thevipershow.geomvectorlib.geometry.planes.BidimensionalUtils;
 import me.thevipershow.geomvectorlib.geometry.planes.RegularPlaneShape;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 import org.jetbrains.annotations.NotNull;
 
 public class SquarePlane extends RegularPlaneShape {
     @NotNull
-    public SquarePlane(final int sides, final double radius, @NotNull final DoublePair center) {
-        super(sides, radius, center);
+    public SquarePlane(final double radius, @NotNull final DoublePair center) {
+        super(4, radius, center);
     }
 
     @NotNull
-    public SquarePlane(final int sides, final double radius, final double x1, final double y1) {
-        super(sides, radius, x1, y1);
+    public SquarePlane(final double radius, final double x1, final double y1) {
+        super(4, radius, x1, y1);
     }
 
     @NotNull
@@ -52,6 +53,17 @@ public class SquarePlane extends RegularPlaneShape {
         vertexes.add(super.center.sum(-super.apothem, super.apothem));
         vertexes.add(super.center.sum(-super.apothem, -super.apothem));
         return vertexes;
+    }
+
+    @Override
+    public @NotNull List<DoublePair> calculateSpacedLines(double delta) {
+        final List<DoublePair> vertexes = calculateVertexes();
+        final List<DoublePair> spacedLines = new ArrayList<>();
+        spacedLines.addAll(BidimensionalUtils.joinTwoSpacePoints(vertexes.get(0), vertexes.get(1), delta));
+        spacedLines.addAll(BidimensionalUtils.joinTwoSpacePoints(vertexes.get(1), vertexes.get(2), delta));
+        spacedLines.addAll(BidimensionalUtils.joinTwoSpacePoints(vertexes.get(2), vertexes.get(3), delta));
+        spacedLines.addAll(BidimensionalUtils.joinTwoSpacePoints(vertexes.get(3), vertexes.get(0), delta));
+        return spacedLines;
     }
 
     @Override

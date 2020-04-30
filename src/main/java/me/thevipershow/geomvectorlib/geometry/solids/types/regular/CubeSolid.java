@@ -24,7 +24,7 @@
  *
  */
 
-package me.thevipershow.geomvectorlib.geometry.solids.types.platonic;
+package me.thevipershow.geomvectorlib.geometry.solids.types.regular;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,10 +62,11 @@ public class CubeSolid extends RegularSolidShape {
         return vertexes;
     }
 
-    public @NotNull List<DoubleTriple> joinVertexes(final double delta) {
+    @Override
+    public @NotNull List<DoubleTriple> calculateSpacedLines(final double delta) {
         final List<DoubleTriple> vertexes = calculateVertexes();
         final List<DoubleTriple> lines = new ArrayList<>();
-        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(0),vertexes.get(1),delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(0), vertexes.get(1), delta));
         lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(1), vertexes.get(2), delta));
         lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(2), vertexes.get(3), delta));
         lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(3), vertexes.get(0), delta));

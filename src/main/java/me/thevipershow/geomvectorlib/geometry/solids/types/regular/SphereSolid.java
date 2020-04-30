@@ -24,7 +24,7 @@
  *
  */
 
-package me.thevipershow.geomvectorlib.geometry.solids.types.platonic;
+package me.thevipershow.geomvectorlib.geometry.solids.types.regular;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +42,13 @@ public class SphereSolid extends RegularSphericalShape {
 
     @NotNull
     @Override
-    public List<DoubleTriple> calculateVertexes(final double delta) {
+    public List<DoubleTriple> calculateSpacedLines(final double delta) {
         final List<DoubleTriple> doubleTriplesSet = new ArrayList<>();
-        final List<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d);
+        final List<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateSpacedLines(delta, 180d);
         for (final DoublePair pair : dummyCircle) {
             final double currentRadius = Math.abs(pair.getFirst() - super.center.getFirst());
             final CirclePlane currentCircle = new CirclePlane(currentRadius, center.getFirst(), center.getThird());
-            for (final DoublePair secondPair : currentCircle.calculateVertexes(delta)) {
+            for (final DoublePair secondPair : currentCircle.calculateSpacedLines(delta)) {
                 final DoubleTriple doubleTriple = new DoubleTriple(secondPair.getFirst(), pair.getSecond(), secondPair.getSecond());
                 doubleTriplesSet.add(doubleTriple);
             }

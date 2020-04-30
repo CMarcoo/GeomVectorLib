@@ -14,11 +14,12 @@
 package me.thevipershow.geomvectorlib.geometry.planes;
 
 import me.thevipershow.geomvectorlib.geometry.common.PlaneCalculator;
+import me.thevipershow.geomvectorlib.geometry.common.SpacedLinesCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
 import me.thevipershow.geomvectorlib.pairs.DoublePair;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class RegularPlaneShape implements VertexesCalculator<DoublePair>, PlaneCalculator {
+public abstract class RegularPlaneShape implements VertexesCalculator<DoublePair>, PlaneCalculator, SpacedLinesCalculator<DoublePair> {
     protected final int sides;
     protected final double apothem;
     protected final @NotNull DoublePair center;

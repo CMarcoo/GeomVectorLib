@@ -14,11 +14,12 @@
 package me.thevipershow.geomvectorlib.geometry.solids;
 
 import me.thevipershow.geomvectorlib.geometry.common.SolidCalculator;
+import me.thevipershow.geomvectorlib.geometry.common.SpacedLinesCalculator;
 import me.thevipershow.geomvectorlib.geometry.common.VertexesCalculator;
 import me.thevipershow.geomvectorlib.triples.DoubleTriple;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class RegularSolidShape implements VertexesCalculator<DoubleTriple>, SolidCalculator {
+public abstract class RegularSolidShape implements VertexesCalculator<DoubleTriple>, SpacedLinesCalculator<DoubleTriple>, SolidCalculator {
     protected final @NotNull DoubleTriple center;
     protected final double apothem;
 
