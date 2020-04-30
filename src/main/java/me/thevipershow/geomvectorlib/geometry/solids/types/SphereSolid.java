@@ -31,8 +31,7 @@ public class SphereSolid extends RegularSphericalShape {
     @Override
     public List<DoubleTriple> calculateVertexes(final double delta) {
         final List<DoubleTriple> doubleTriplesSet = new ArrayList<>();
-        final List<DoublePair> dummyCircle = new ArrayList<>();
-                new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d);
+        final List<DoublePair> dummyCircle = new CirclePlane(super.radius, super.center.getFirst(), super.center.getSecond()).calculateVertexes(delta, 180d);
         for (final DoublePair pair : dummyCircle) {
             final double currentRadius = Math.abs(pair.getFirst() - super.center.getFirst());
             final CirclePlane currentCircle = new CirclePlane(currentRadius, center.getFirst(), center.getThird());
