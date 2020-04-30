@@ -40,12 +40,12 @@ public class CubeSolid extends RegularSolidShape {
         final List<DoubleTriple> vertexes = new ArrayList<>();
         vertexes.add(super.center.sum(super.apothem, super.apothem, super.apothem));
         vertexes.add(super.center.sum(super.apothem, super.apothem, -super.apothem));
+        vertexes.add(super.center.sum(-super.apothem, super.apothem, -super.apothem));
+        vertexes.add(super.center.sum(-super.apothem, super.apothem, super.apothem));
+        vertexes.add(super.center.sum(super.apothem, -super.apothem, super.apothem));
         vertexes.add(super.center.sum(super.apothem, -super.apothem, -super.apothem));
         vertexes.add(super.center.sum(-super.apothem, -super.apothem, -super.apothem));
         vertexes.add(super.center.sum(-super.apothem, -super.apothem, super.apothem));
-        vertexes.add(super.center.sum(-super.apothem, super.apothem, super.apothem));
-        vertexes.add(super.center.sum(-super.apothem, super.apothem, -super.apothem));
-        vertexes.add(super.center.sum(super.apothem, -super.apothem, super.apothem));
         return vertexes;
     }
 
@@ -54,6 +54,9 @@ public class CubeSolid extends RegularSolidShape {
         final List<DoubleTriple> lines = new ArrayList<>();
         for (int i = 1; i < 8; i += 2) {
             lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(i), vertexes.get(i - 1), delta));
+        }
+        for (int i = 0; i < 4; i++) {
+            lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(i), vertexes.get(i + 4), delta));
         }
         return lines;
     }
