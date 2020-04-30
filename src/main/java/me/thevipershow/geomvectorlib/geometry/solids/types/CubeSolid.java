@@ -52,12 +52,18 @@ public class CubeSolid extends RegularSolidShape {
     public @NotNull List<DoubleTriple> joinVertexes(final double delta) {
         final List<DoubleTriple> vertexes = calculateVertexes();
         final List<DoubleTriple> lines = new ArrayList<>();
-        for (int i = 1; i < 8; i += 2) {
-            lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(i), vertexes.get(i - 1), delta));
-        }
-        for (int i = 0; i < 4; i++) {
-            lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(i), vertexes.get(i + 4), delta));
-        }
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(0),vertexes.get(1),delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(1), vertexes.get(2), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(2), vertexes.get(3), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(3), vertexes.get(0), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(4), vertexes.get(5), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(5), vertexes.get(6), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(6), vertexes.get(7), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(7), vertexes.get(4), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(0), vertexes.get(4), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(1), vertexes.get(5), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(2), vertexes.get(6), delta));
+        lines.addAll(TridimensionalUtils.joinTwoSpacePoints(vertexes.get(3), vertexes.get(7), delta));
         return lines;
     }
 }
